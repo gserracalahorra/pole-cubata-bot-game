@@ -50,7 +50,7 @@ def webhook():
 
 @bot.message_handler(content_types=["text"])
 def process_txt_message(message):
-  logger.info(message.text)
+    logger.info(message.text)
     if message.text.startswith('!'):
         process_internal_command(message)
     else:
