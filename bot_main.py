@@ -63,9 +63,11 @@ def process_pole_event(message):
     month = now.month
     day = now.day
 
-    if datetime.datetime(year, month, day, 7, 0) < datetime.utcnow() and \
-            datetime.utcnow() < datetime.datetime(year, month, day, 7, 15) and \
-            isActivePoleCubata:
+    if datetime.datetime(year, month, day, 6, 0) < datetime.utcnow() and \
+            datetime.utcnow() < datetime.datetime(year, month, day, 9, 15) and \
+            isActivePoleCubata and message.text == 'Pole Cubata':
+        logger.info("El borracho " + user_name + " ha hecho la pole Cubata")
+        isActivePoleCubata = false
         add_score_to_user(message.chat.id, message.from_user.id)
 
 def add_score_to_user(user_id, chat_id):
