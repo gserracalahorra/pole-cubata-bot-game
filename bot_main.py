@@ -50,6 +50,7 @@ def webhook():
 
 @bot.message_handler(content_types=["text"])
 def process_txt_message(message):
+  logger.info(message.text)
     if message.text.startswith('!'):
         process_internal_command(message)
     else:
@@ -61,7 +62,7 @@ def process_internal_command(message):
         show_info_message(message)
     elif message.text == '!polecubatarank':
         show_classical_pole_rank(message)
-
+        
 def process_pole_event(message):
     now = datetime.utcnow() + timedelta(days=1)
     year = now.year
