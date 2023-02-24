@@ -15,11 +15,6 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-def schedule_checker():
-    while True:
-        schedule.run_pending()
-        sleep(1)
-
 isActivePoleCubata = False
 
 global db
@@ -39,6 +34,11 @@ except Exception as ex:
 bot = telebot.TeleBot(TELEGRAM_TOKEN)
 web_server = Flask(__name__)
 
+
+def schedule_checker():
+    while True:
+        schedule.run_pending()
+        sleep(1)
 
 @web_server.route('/', methods=['POST'])
 def webhook():
